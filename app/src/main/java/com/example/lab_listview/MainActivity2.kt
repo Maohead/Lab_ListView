@@ -1,8 +1,6 @@
 package com.example.lab_listview
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,23 +9,22 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         data class ListItem(val imageR: Int, val text: String, val action: String){
 
         }
@@ -50,7 +47,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         val items = listOf(
-            ListItem(R.drawable.happy, "happy heaarts and sunny days", "Action1")
+            ListItem(R.drawable.happy, "Takata - New Faces", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Soothing Rhythm", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Rio Rhythm", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Pure Waves", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Gentle Rainfall", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Sunrise Waves", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Falling Leaves", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Heart of Bossa", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Soothing Sunlight", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Glow Up", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Glow Bright", "Action1"),
+            ListItem(R.drawable.happy, "Takata - Rio Nights", "Action1"),
         )
 
         val listView : ListView = findViewById(R.id.lvMain)
@@ -60,10 +68,9 @@ class MainActivity : AppCompatActivity() {
 
         listView.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = items[position]
-            val intent = Intent(this, MainActivity2::class.java)
             when(selectedItem.action) {
                 "Action1" -> {
-                    startActivity(intent)
+                    Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show()
                 }
             }
         }
